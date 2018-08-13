@@ -3,7 +3,7 @@ SafeVid is a simple  encrypted full duplex video transmission service for local 
 
 Usage :
  - Assign you local address .
-  For linux : Open up your terminal . Type "ifconfig" Find wlan0 for wifi network and eth0 for broadband servcies
-  For windows : Open up your cmd. Type "ipconfig"  Find wlan0 for wifi network and eth0 for broadband servcies
+  For linux : Open up your terminal . Type "ifconfig" Find wlan0 for wifi network and eth0 for broadband servcies. Copy the inet address for ipv4 and  inet6 for ipv6.
+  For windows : Open up your cmd. Type "ipconfig"  Find wlan0 for wifi network and eth0 for broadband servcies. Copy the inet address for ipv4 and  inet6 for ipv6.
 - Assign a port number. The default is 1111
 - Now run the program with python3 
