@@ -41,8 +41,7 @@ class serverside:
             print(e)
         except KeyboardInterrupt:
             self.server.close()
-            print("Connection has been terminated")
-            sys.exit()
+            sys.exit("Connection has been terminated")
 
     def send_data(self):
         while True:
