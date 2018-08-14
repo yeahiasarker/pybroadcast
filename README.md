@@ -25,3 +25,4 @@ Please look in the GIT Repository. There is an example directory where you can f
 
 ## References
 - Python : https://www.python.org/
+- Opencv : https://pypi.org/project/opencv-python/
