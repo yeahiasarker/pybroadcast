@@ -1,4 +1,5 @@
 # SafeVid
+##Overview
 SafeVid is a simple  encrypted full duplex video transmission service for local network. It uses symmetric advanced cryptographic algorithm to encrypt frames. It is safe cause encrypted frame is passed over network. Both the client and server use the same key. pbkdf2 is used to generate key from passwords. It is easy to use. 
 
 Usage :
