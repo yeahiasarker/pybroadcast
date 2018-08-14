@@ -9,7 +9,8 @@ SafeVid is a simple  encrypted full duplex video transmission service for local 
 ## Installation
 Extract files from the archive, open a shell/console in that directory and let Distutils do the rest
 
-``` python setup.py install
+``` 
+python setup.py install
 ```
 
 ## Usage :
