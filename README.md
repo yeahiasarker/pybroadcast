@@ -19,3 +19,9 @@ python setup.py install
   For windows : Open up your cmd. Type "ipconfig"  Find wlan0 for wifi network and eth0 for broadband servcies. Copy the inet address for ipv4 and  inet6 for ipv6.
 - Assign a port number. The default is 1111
 - Now run the program with python3 
+
+## Example
+Please look in the GIT Repository. There is an example directory where you can find a simple terminal and more. 
+
+## References
+- Python : https://www.python.org/
