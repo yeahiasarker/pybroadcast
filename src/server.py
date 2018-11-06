@@ -16,7 +16,7 @@ class serverside:
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
         self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-    def serve(self, host_ip, port):
+    def host_server(self, host_ip, port):
         """ Fabricating Server Side...."""
         self.host_ip = host_ip
         self.port = port
@@ -51,4 +51,4 @@ class serverside:
             print("Sending frames.....")
 
 videoserver = serverside()
-videoserver.serve("local address",1111) # must assign the local addressS
+videoserver.host_server("local address",1111) # must assign the local addressS
