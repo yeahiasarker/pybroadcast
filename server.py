@@ -4,13 +4,19 @@
 Created on Sun Jul 29 02:11:24 2018
 @author: Yeahia Sarker
 """
+
+from imutils.video import FileVideoStream
+from imutils.video import FPS
+import cv2
+import imutils
+import numpy as np
+import pickle
 import socket
 import sys
-import cv2
-import pickle
+import time
 
-class serverside:
 
+class pybroadcast_serverside:
     def __init__(self):
         """ Initializing Socket Server..."""
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
@@ -42,13 +48,22 @@ class serverside:
             sys.exit("Connection has been terminated")
 
     def send_data(self):
-        while True:
-            cap = cv2.VideoCapture(0) # open default camera
-            ret,frame = cap.read()
-            frame = cv2.medianBlur(frame,5) # blurring frames to reduce noise
-            data = pickle.dumps(frame)
-            self.__base.send(data)
-            print("Sending frames.....")
 
-videoserver = serverside()
-videoserver.host_server("local address",1111) # must assign the local addressS
+        starting_video_stream = FileVideoStream(0).start()
+        time.sleep(1.0)
+        fps_timer = FPS().start() # Starting frame per second counter
+        while True:
+            frame = starting_video_stream.read()
+            frame = imutils.resize(frame, width=450)
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            frame = np.dstack([frame, frame, frame])
+            frame = cv2.medianBlur(frame,5) # blurring frames to reduce noise
+            serialized_dataframe = pickle.dumps(frame)
+            self.__base.send(serialized_dataframe)
+            print("Sending frames.....")
+            cv2.imshow("[Pybroadcast] Server", frame)
+            cv2.waitKey(1)
+            fps_timer.update() # Updating frame per second counter
+
+videoserver = pybroadcast_serverside()
+videoserver.host_server("192.168.0.104",1111) # must assign the local addressS
