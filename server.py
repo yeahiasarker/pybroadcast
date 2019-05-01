@@ -12,6 +12,7 @@ import imutils
 import numpy as np
 import pickle
 import socket
+import struct
 import sys
 import time
 
@@ -58,8 +59,9 @@ class pybroadcast_serverside:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             frame = np.dstack([frame, frame, frame])
             frame = cv2.medianBlur(frame,5) # blurring frames to reduce noise
-            serialized_dataframe = pickle.dumps(frame)
-            self.__base.send(serialized_dataframe)
+            serialized_data = pickle.dumps(frame)
+            new_serialized_data = struct.pack("H", len(serialized_data)) + serialized_data
+            self.__base.send(new_serialized_data)
             print("Sending frames.....")
             cv2.imshow("[Pybroadcast] Server", frame)
             cv2.waitKey(1)
